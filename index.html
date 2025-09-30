@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regan's Academy</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fd;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+    .navbar .logo { font-size: 22px; font-weight: bold; }
+    .navbar nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+    .navbar nav a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 10%;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      flex-wrap: wrap;
+    }
+    .hero-text { max-width: 50%; }
+    .hero-text h1 { font-size: 42px; margin-bottom: 20px; }
+    .hero-text p { font-size: 18px; margin-bottom: 25px; }
+    .hero-buttons button {
+      padding: 12px 25px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .primary-btn { background: #ff4b2b; color: white; }
+    .primary-btn:hover { background: #ff416c; }
+    .secondary-btn { background: white; color: #2575fc; border: 2px solid white; }
+    .secondary-btn:hover { background: rgba(255, 255, 255, 0.8); }
+    .hero-image img { max-width: 300px; }
+
+    /* Sections */
+    section { padding: 60px 10%; }
+    h2 { text-align: center; margin-bottom: 30px; font-size: 28px; color: #6a11cb; }
+
+    /* Cards */
+    .feature-cards, .course-cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      text-align: center;
+    }
+    .card h3 { margin-bottom: 10px; color: #2575fc; }
+
+    /* Forms */
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    form button {
+      width: 100%;
+      padding: 12px;
+      background: #6a11cb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    form button:hover { background: #2575fc; }
+    #message { margin-top: 15px; font-weight: bold; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    table th { background: #6a11cb; color: white; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #6a11cb;
+      color: white;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">Regan's Academy</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#register">Register</a>
+      <a href="#students">Students</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Learn Smarter, Grow Faster 🚀</h1>
+      <p>Join <span>Regan's Academy</span> and master programming with top instructors.</p>
+      <div class="hero-buttons">
+        <a href="#courses"><button class="primary-btn">Explore Courses</button></a>
+        <a href="#register"><button class="secondary-btn">Register Now</button></a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Learning illustration">
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses">
+    <h2>Available Courses</h2>
+    <div class="course-cards" id="courseCards"></div>
+  </section>
+
+  <!-- Register -->
+  <section id="register">
+    <h2>Register for a Course</h2>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <select id="courseName" required></select>
+      <button type="submit">Enroll</button>
+      <p id="message"></p>
+    </form>
+  </section>
+
+  <!-- Students -->
+  <section id="students">
+    <h2>Enrolled Students</h2>
+    <table id="enrolledTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>© 2025 Regan's Academy | Learn. Code. Conquer.</p>
+  </footer>
+
+  <script>
+    const baseUrl = "http://localhost:8080";
+
+    // Fetch Courses
+    fetch(baseUrl + "/course")
+      .then(res => res.json())
+      .then(data => {
+        const courseCards = document.getElementById("courseCards");
+        const select = document.getElementById("courseName");
+        data.forEach(course => {
+          // Add card
+          const div = document.createElement("div");
+          div.className = "card";
+          div.innerHTML = `<h3>${course.courseName}</h3>
+                           <p><b>Trainer:</b> ${course.trainer}</p>
+                           <p><b>Duration:</b> ${course.duration} weeks</p>`;
+          courseCards.appendChild(div);
+
+          // Add option to dropdown
+          let option = document.createElement("option");
+          option.value = course.courseName;
+          option.textContent = course.courseName;
+          select.appendChild(option);
+        });
+      });
+
+    // Register student
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const courseName = document.getElementById("courseName").value;
+
+      fetch(`${baseUrl}/course/register?name=${name}&emailId=${email}&courseName=${courseName}`, {
+        method: "POST"
+      })
+      .then(res => res.text())
+      .then(msg => {
+        document.getElementById("message").innerText = msg;
+        loadStudents(); // refresh enrolled table
+      })
+      .catch(err => alert("Error: " + err));
+    });
+
+    // Fetch Students
+    function loadStudents() {
+      fetch(baseUrl + "/course/enrol")
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.querySelector("#enrolledTable tbody");
+          tbody.innerHTML = "";
+          data.forEach(s => {
+            let row = `<tr>
+                        <td>${s.id}</td>
+                        <td>${s.name}</td>
+                        <td>${s.emailId}</td>
+                        <td>${s.courseName}</td>
+                       </tr>`;
+            tbody.innerHTML += row;
+          });
+        });
+    }
+    loadStudents();
+  </script>
+</body>
+</html>
